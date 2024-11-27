@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@config/*": [
+                "./src/config/*"
+            ],
+            "@controllers/*": [
+                "./src/controllers/*"
+            ],
+            "@middlewares/*": [
+                "./src/middlewares/*"
+            ],
+            "@validators/*": [
+                "./src/validators/*"
+            ],
+            "@routes/*": [
+                "./src/routes/*"
+            ],
+            "@models/*": [
+                "./src/models/*"
+            ],
+            "@services/*": [
+                "./src/services/*"
+            ],
+            "@logger/*": [
+                "./src/logging/*"
+            ],
+            "@utils/*": [
+                "./src/utils/*"
+            ],
+            "@projTypes/*": [
+                "./src/types/*"
+            ]
+        }
+    },
+    "exclude": [
+        "**/*.test.ts"
+    ]
+}
