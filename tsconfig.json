@@ -1,11 +1,24 @@
 {
+    /*
+     * https://www.totaltypescript.com/tsconfig-cheat-sheet
+     * https://stackoverflow.com/questions/75807785/why-do-i-need-to-include-js-extension-in-typescript-import-for-custom-module
+     * Check the above links for the detail tsconfig documentation
+    */
     "compilerOptions": {
+        "module": "NodeNext",
+        "target": "es2022",
         "outDir": "./dist",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
+        "moduleDetection": "force",
         "strict": true,
-        "resolveJsonModule": true,
+        "allowJs": true,
         "skipLibCheck": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "noImplicitOverride": true,
+        "noUncheckedIndexedAccess": true,
+        "forceConsistentCasingInFileNames": true,
         "paths": {
             "@config/*": [
                 "./src/config/*"

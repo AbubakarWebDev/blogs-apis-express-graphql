@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 
-import { logger } from '../logging/logger';
+import { logger } from '../logging/logger.js';
 
 function asyncHandler(
     handler: (req: Request, res: Response, next: NextFunction) => void,

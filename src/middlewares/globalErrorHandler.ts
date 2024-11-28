@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 
-import { APIErrorType, ApiError } from '@utils/apiError';
-import { responseMessage } from '@utils/responseMessage';
+import { type APIErrorType, ApiError } from '@utils/apiError.js';
+import { responseMessage } from '@utils/responseMessage.js';
 
 const errorHandler = (
     error: APIErrorType,

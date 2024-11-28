@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import { format, createLogger, transports } from 'winston';
 
 const { combine, label, timestamp, printf } = format;

@@ -1,24 +1,24 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 
 import {
-    createUserType,
+    type CreateUserType,
     createUserValidator,
-    updateUserType,
+    type UpdateUserType,
     updateUserValidator,
-} from '@validators/user.validators';
+} from '@validators/user.validators.js';
 
 import {
     createNewUser,
     deleteUserbyID,
     getUserbyId,
     updateUser,
-} from '@services/user.services';
+} from '@services/user.services.js';
 
-import { ApiError } from '@utils/apiError';
-import { apiResponse } from '@utils/apiResponse';
-import { asyncHandler } from '@utils/asyncHandler';
-import { responseMessage } from '@utils/responseMessage';
-import { RESPONSE_STATUS } from '@utils/responseStatus';
+import { ApiError } from '@utils/apiError.js';
+import { apiResponse } from '@utils/apiResponse.js';
+import { asyncHandler } from '@utils/asyncHandler.js';
+import { responseMessage } from '@utils/responseMessage.js';
+import { RESPONSE_STATUS } from '@utils/responseStatus.js';
 
 const createUser = asyncHandler(async (req: Request, res: Response) => {
     const body = req.body;
@@ -30,7 +30,7 @@ const createUser = asyncHandler(async (req: Request, res: Response) => {
         });
     }
 
-    const { email, name, password } = body as createUserType;
+    const { email, name, password } = body as CreateUserType;
 
     const newUserObj = {
         email,
@@ -51,7 +51,7 @@ const getUser = asyncHandler(async (req: Request, res: Response) => {
 
     const { id } = params;
 
-    const getUserData = await getUserbyId(id);
+    const getUserData = await getUserbyId(id ?? '');
 
     return apiResponse(res, RESPONSE_STATUS.SUCCESS, {
         data: getUserData,
@@ -71,9 +71,9 @@ const updateUserData = asyncHandler(async (req: Request, res: Response) => {
     }
 
     const { id } = params;
-    const { name } = body as updateUserType;
+    const { name } = body as UpdateUserType;
 
-    const updateData = await updateUser(id, {
+    const updateData = await updateUser(id ?? '', {
         name,
     });
 
@@ -88,7 +88,7 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
 
     const { id } = params;
 
-    await deleteUserbyID(id);
+    await deleteUserbyID(id ?? '');
 
     return apiResponse(res, RESPONSE_STATUS.NOCONTENT, {
         message: responseMessage.USER.DELETED,

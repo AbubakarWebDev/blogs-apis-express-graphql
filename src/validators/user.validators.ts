@@ -10,12 +10,12 @@ const updateUserValidator = z.object({
     name: z.string().min(1),
 });
 
-type createUserType = z.infer<typeof createUserValidator>;
-type updateUserType = z.infer<typeof updateUserValidator>;
+type CreateUserType = z.infer<typeof createUserValidator>;
+type UpdateUserType = z.infer<typeof updateUserValidator>;
 
 export {
-    createUserType,
+    type CreateUserType,
     createUserValidator,
-    updateUserType,
+    type UpdateUserType,
     updateUserValidator,
 };

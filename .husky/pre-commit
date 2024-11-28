@@ -1,6 +1,3 @@
-echo "[Husky] Running commit lint..."
-npm run lint:commit
-
 echo "[Husky] Running Prettier..."
 npm run format
 

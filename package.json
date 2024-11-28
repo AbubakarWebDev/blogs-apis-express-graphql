@@ -2,6 +2,7 @@
   "name": "blogs-apis-express-graphql",
   "version": "1.0.0",
   "main": "server.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc && tsc-alias",
     "start:dev": "cross-env NODE_ENV=development tsx watch src/server.ts",
@@ -12,10 +13,12 @@
     "start:prod": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
+    "@apollo/server": "^4.11.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "graphql": "^16.9.0",
     "mongoose": "^8.2.2",
     "winston": "^3.12.0",
     "zod": "^3.22.4"
