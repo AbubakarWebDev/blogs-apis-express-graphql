@@ -1,24 +1,22 @@
 import type { Request, Response } from 'express';
 
 import {
-    type CreateUserType,
-    createUserValidator,
-    type UpdateUserType,
-    updateUserValidator,
-} from '@validators/user.validators.js';
-
-import {
     createNewUser,
     deleteUserbyID,
     getUserbyId,
     updateUser,
-} from '@services/user.services.js';
-
-import { ApiError } from '@utils/apiError.js';
-import { apiResponse } from '@utils/apiResponse.js';
-import { asyncHandler } from '@utils/asyncHandler.js';
-import { responseMessage } from '@utils/responseMessage.js';
-import { RESPONSE_STATUS } from '@utils/responseStatus.js';
+} from '@/services/user.services.js';
+import { ApiError } from '@/utils/apiError.js';
+import { apiResponse } from '@/utils/apiResponse.js';
+import { asyncHandler } from '@/utils/asyncHandler.js';
+import { responseMessage } from '@/utils/responseMessage.js';
+import { RESPONSE_STATUS } from '@/utils/responseStatus.js';
+import {
+    type CreateUserType,
+    createUserValidator,
+    type UpdateUserType,
+    updateUserValidator,
+} from '@/validators/user.validators.js';
 
 const createUser = asyncHandler(async (req: Request, res: Response) => {
     const body = req.body;

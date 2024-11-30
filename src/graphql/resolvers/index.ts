@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import type { User } from '@projTypes/user.types.js';
+import type { User } from '@/types/user.types.js';
 
 const users: User[] = [
     {
@@ -37,6 +37,8 @@ export const resolvers = {
                 (user) => user._id === args.userId,
             );
 
+            if (userIndex === -1) return 'No user found for this userId';
+
             users[userIndex] = {
                 _id: args.userId,
                 name: args.user.name,
@@ -51,6 +53,8 @@ export const resolvers = {
             const userIndex = users.findIndex(
                 (user) => user._id === args.userId,
             );
+
+            if (userIndex === -1) return 'No user found for this userId';
 
             users.splice(userIndex, 1);
 

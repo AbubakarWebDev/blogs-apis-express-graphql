@@ -3,11 +3,10 @@ import { cpus } from 'os';
 
 import { config } from 'dotenv';
 
-import { dbConnection } from '@config/db';
+import { dbConnection } from '@/config/db.js';
+import { logger } from '@/logging/logger.js';
 
-import { logger } from '@logger/logger';
-
-import { app } from './app';
+import { app } from './app.js';
 
 config();
 

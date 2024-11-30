@@ -3,11 +3,10 @@ import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import express from 'express';
 
-import { errorHandler } from '@middlewares/globalErrorHandler.js';
-
-import { apiRequestLogger } from '@logger/logger.js';
-
-import { rootRouter } from '@routes/index.js';
+import { apiRequestLogger } from '@/logging/logger.js';
+import { errorHandler } from '@/middlewares/globalErrorHandler.js';
+import { rootRouter } from '@/routes/index.js';
+import { formatError } from '@/utils/graphqlErrorFormat.js';
 
 import { resolvers } from './graphql/resolvers/index.js';
 import { typeDefs } from './graphql/typedefs/index.js';
@@ -17,6 +16,7 @@ const app = express();
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    formatError,
 });
 
 // Note you must call `start()` on the `ApolloServer`

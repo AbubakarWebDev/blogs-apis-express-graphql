@@ -1,6 +1,5 @@
-import { UserModel } from '@models/user.models.js';
-
-import type { User } from '@projTypes/user.types.js';
+import { UserModel } from '@/models/user.models.js';
+import type { User } from '@/types/user.types.js';
 
 const createNewUser = async (data: User) => {
     return await UserModel.create(data);
