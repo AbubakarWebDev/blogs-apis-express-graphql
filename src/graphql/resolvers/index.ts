@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import type { User } from '@/types/user.types.js';
+import { responseMessage } from '@/utils/responseMessage.js';
 
 const users: User[] = [
     {
@@ -29,7 +30,7 @@ export const resolvers = {
                 password: args.user.password,
             });
 
-            return 'User Created Successfully';
+            return responseMessage.USER.CREATED;
         },
 
         editUser: (_: any, args: { userId: string; user: User }) => {
@@ -37,7 +38,7 @@ export const resolvers = {
                 (user) => user._id === args.userId,
             );
 
-            if (userIndex === -1) return 'No user found for this userId';
+            if (userIndex === -1) return responseMessage.USER.NO_USERID_FOUND;
 
             users[userIndex] = {
                 _id: args.userId,
@@ -46,7 +47,7 @@ export const resolvers = {
                 password: args.user.password,
             };
 
-            return 'User Updated Successfully';
+            return responseMessage.USER.UPDATED;
         },
 
         deleteUser: (_: any, args: { userId: string }) => {
@@ -54,11 +55,11 @@ export const resolvers = {
                 (user) => user._id === args.userId,
             );
 
-            if (userIndex === -1) return 'No user found for this userId';
+            if (userIndex === -1) return responseMessage.USER.NO_USERID_FOUND;
 
             users.splice(userIndex, 1);
 
-            return 'User Deleted Successfully';
+            return responseMessage.USER.DELETE_USER;
         },
     },
 };
